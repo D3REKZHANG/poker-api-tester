@@ -1,6 +1,6 @@
 import { useDrag } from 'react-dnd'
 
-const Card = ({ value, suit }) => {
+const Card = ({ value, suit, absolute, offset }) => {
 
   const [{ isDragging }, dragRef] = useDrag({
     type: 'card',
@@ -16,9 +16,13 @@ const Card = ({ value, suit }) => {
   return (
     <div 
       ref={dragRef}
-      className="bg-white border-2 border-slate-100 w-40 h-56 m-4 flex justify-center items-center"
+      style={{position: absolute && 'absolute', top: 10, left: offset, zIndex: offset}}
+      className={`bg-white border-2 border-slate-100 w-40 h-56 m-4 p-1`}
     >
-      {value} {suit}
+      <div className="w-4 flex flex-col justify-start items-center">
+        <p>{value}</p>
+        <img src={`https://sean.brunnock.com/Images/${suit.toLowerCase().slice(0,suit.length-1)}.svg`} width={15}/>
+      </div>
     </div>
   )
 }

@@ -19,8 +19,8 @@ function App() {
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="flex flex-col h-screen">
-        <h1 className="text-5xl text-center pt-8">
-          Poker Evaluator API Tester 
+        <h1 className="text-3xl text-center pt-8">
+          Poker Evaluator API Tester
         </h1>
         <div className="flex flex-row grow justify-evenly items-center">
           <div className="flex flex-row">
@@ -29,11 +29,11 @@ function App() {
             ))}
           </div>
         </div>
-          <div className="flex flex-row">
-            {deck.slice(0,6).map((card, idx) => (
-              <Card key={idx} value={`${card.value} ${card.suit}`} handleDrop={handleDrop} />
-            ))}
-          </div>
+        <div className="relative w-full h-72">
+          {deck.map((card, idx) => (
+            <Card key={idx} absolute offset={idx*25} value={card.value} suit={card.suit} handleDrop={handleDrop} />
+          ))}
+        </div>
       </div>
     </DndProvider>
   );

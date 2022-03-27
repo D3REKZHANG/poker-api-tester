@@ -15,8 +15,8 @@ const Slot = ({index, card, handleDrop}) => {
 
   return (
     <div ref={dropRef}>
-      {(card.value) ? 
-        <Card value={card.value} suit={card.suit}/> :
+      {(card) ? 
+        <Card slot idx={index} value={card.value} suit={card.suit}/> :
         <div className="bg-slate-50 w-40 h-56 m-4 flex justify-center items-center">
           Slot {index}
         </div>

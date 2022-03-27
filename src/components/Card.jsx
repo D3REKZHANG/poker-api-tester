@@ -1,12 +1,14 @@
 import { useDrag } from 'react-dnd'
 
-const Card = ({ value, suit, absolute, offset }) => {
+const Card = ({ slot, idx, value, suit, absolute, offset }) => {
 
   const [{ isDragging }, dragRef] = useDrag({
     type: 'card',
     item: {
       value: value,
       suit: suit,
+      idx: idx,
+      slot: !!slot,
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging()
@@ -17,7 +19,7 @@ const Card = ({ value, suit, absolute, offset }) => {
     <div 
       ref={dragRef}
       style={{position: absolute && 'absolute', top: 10, left: offset, zIndex: offset}}
-      className={`bg-white border-2 border-slate-100 w-40 h-56 m-4 p-1`}
+      className={`rounded-lg bg-white border-2 border-slate-100 w-40 h-56 m-4 p-1`}
     >
       <div className="w-4 flex flex-col justify-start items-center">
         <p>{value}</p>

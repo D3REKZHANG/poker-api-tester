@@ -2,29 +2,28 @@
 const values = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const suits = ['Diamonds', 'Clubs', 'Hearts', 'Spades'];
 
-export const getShuffledDeck = () => {
-  let deck = []
+let deck = []
 
+suits.forEach(suit => {
   values.forEach(val => {
-    suits.forEach(suit => {
-      deck.push({
-        value: val,
-        suit: suit
-      });
-    })
+    deck.push({
+      value: val,
+      suit: suit
+    });
   })
+})
 
+export const getDeck = () => {
+  return deck;
+}
+
+export const getShuffledDeck = () => {
   shuffle(deck);
-
   return deck;
 }
 
 export const getEmptyHand = () => {
-  const nothing = {
-    value: null,
-    suit: null,
-  }
-  return [ nothing, nothing, nothing, nothing, nothing ]
+  return [ null, null, null, null, null ]
 }
 
 const shuffle = (array) => {
